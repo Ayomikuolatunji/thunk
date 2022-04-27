@@ -9,11 +9,13 @@ function App() {
   const { cartItems, isLoading } = useSelector((state) => state.cart);
   const { isOpen } = useSelector((state) => state.modal);
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(calculateTotals());
   }, [cartItems,dispatch]);
+  
   useEffect(() => {
-    dispatch(getCartItems());
+    dispatch(getCartItems("ayomiku"));
   }, [dispatch]);
 
   if (isLoading) {
