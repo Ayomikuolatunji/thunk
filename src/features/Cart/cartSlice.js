@@ -68,6 +68,7 @@ const cartSlice=createSlice({
        },
        [fetchById.fulfilled]:(state,action)=>{
              console.log(action.payload);
+             state.singleProduct=action.payload
        }
      }
 
