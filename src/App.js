@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { calculateTotals,getCartItems } from './features/Cart/cartSlice';
 import {Routes, Route} from "react-router-dom"
 import Modal from "./components/Modal"
+import SingleProduct from './components/SingleProduct';
 
 function App() {
   const { cartItems, isLoading } = useSelector((state) => state.cart);
@@ -34,6 +35,7 @@ function App() {
     <Navbar />
     <Routes>
       <Route path='/' element={<CartContainer />}/>
+      <Route path='/:id' element={<SingleProduct/>}/>
     </Routes>
     </main>
   );
