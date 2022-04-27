@@ -16,9 +16,9 @@ function App() {
     dispatch(calculateTotals());
   }, [cartItems,dispatch]);
 
-  // useEffect(() => {
-  //   dispatch(getCartItems("ayomiku"));
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(getCartItems("ayomiku"));
+  }, [dispatch]);
 
   if (isLoading) {
     return (
