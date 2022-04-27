@@ -3,6 +3,7 @@ import Navbar from './components/Navbar';
 import CartContainer from './components/CartContainer';
 import { useSelector, useDispatch } from 'react-redux';
 import { calculateTotals,getCartItems } from './features/Cart/cartSlice';
+import {Routes, Route} from "react-router-dom"
 import Modal from "./components/Modal"
 
 function App() {
@@ -13,7 +14,7 @@ function App() {
   useEffect(() => {
     dispatch(calculateTotals());
   }, [cartItems,dispatch]);
-  
+
   useEffect(() => {
     dispatch(getCartItems("ayomiku"));
   }, [dispatch]);
@@ -31,7 +32,9 @@ function App() {
     <main>
     {isOpen && <Modal />}
     <Navbar />
-    <CartContainer />
+    <Routes>
+      <Route path='/' element={<CartContainer />}/>
+    </Routes>
     </main>
   );
 }
