@@ -2,17 +2,25 @@ import { createStore,combineReducers,applyMiddleware } from '@reduxjs/toolkit'
 import { persistStore, persistReducer } from 'redux-persist'
 import thunk from 'redux-thunk'
 import storage from 'redux-persist/lib/storage' // defaults to localStorage for web
+import hardSet from 'redux-persist/lib/stateReconciler/hardSet'
 
 import  cartSlice  from "./features/Cart/cartSlice";
 import modalSlice from "./features/modal/modalSlice";
 
 const persistConfig = {
-  key: 'root',
+  key: 'store',
   storage,
+  stateReconciler: hardSet,
+  blacklist: ['modal']
 }
-const rootReducer= combineReducers({
-    cart:cartSlice,
-    modal:modalSlice
+
+const authPersistConfig = {
+    key: 'auth',
+    storage: storage,
+  }
+const rootReducer = combineReducers({
+    cart: persistReducer(authPersistConfig, cartSlice),
+    modal: modalSlice,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
