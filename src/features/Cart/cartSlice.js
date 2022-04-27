@@ -7,7 +7,8 @@ const initialState={
     cartItems:[],
     amount:1,
     total:0,
-    isLoading:true
+    isLoading:true,
+    singleProduct:null
 }
 
 export const getCartItems= createAsyncThunk("cart/getCartItems",
@@ -18,8 +19,9 @@ export const getCartItems= createAsyncThunk("cart/getCartItems",
 })
 
 export const fetchById=createAsyncThunk("cartId/fetchById",
-async()=>{
-
+  async(id)=>{
+    const  getSIngleProd=await axios(`url/${'rec1JZlfCIBOPdcT2'}`)
+    return getSIngleProd.data
 })
 
 const cartSlice=createSlice({
@@ -63,6 +65,9 @@ const cartSlice=createSlice({
        },
        [getCartItems.rejected]:(state)=>{
          state.isLoading=false
+       },
+       [fetchById.fulfilled]:(state,action)=>{
+             console.log(action.payload);
        }
      }
 

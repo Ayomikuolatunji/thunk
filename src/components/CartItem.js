@@ -1,6 +1,6 @@
 import React from 'react';
 import { ChevronDown, ChevronUp } from '../icons';
-
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { removeItem, increase, decrease } from '../features/Cart/cartSlice';
 
