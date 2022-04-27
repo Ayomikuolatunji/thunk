@@ -9,7 +9,9 @@ const CartItem = ({ id, img, title, price, amount }) => {
 
   return (
     <article className='cart-item'>
-      <img src={img} alt={title} />
+      <Link to={`/${id}`}>
+        <img src={img} alt={title} />
+      </Link>
       <div>
         <h4>{title}</h4>
         <h4 className='item-price'>${price}</h4>

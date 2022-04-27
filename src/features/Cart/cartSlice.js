@@ -12,15 +12,15 @@ const initialState={
 }
 
 export const getCartItems= createAsyncThunk("cart/getCartItems",
-   async (name, thunkApi)=>{
-   console.log(thunkApi.getState());
+   async (_,thunkApi)=>{
+   console.log(thunkApi);
    const res=await axios(url)
    return res.data
 })
 
 export const fetchById=createAsyncThunk("cartId/fetchById",
   async(id)=>{
-    const  getSIngleProd=await axios(`url/${'rec1JZlfCIBOPdcT2'}`)
+    const  getSIngleProd=await axios(`${'https://jsonplaceholder.typicode.com/users'}/${1}`)
     return getSIngleProd.data
 })
 
@@ -58,7 +58,7 @@ const cartSlice=createSlice({
        [getCartItems.fulfilled]:(state,action)=>{
             state.isLoading=false
             state.cartItems=action.payload
-            console.log(action.payload);
+            // console.log(action.payload);
        },
        [getCartItems.pending]:(state)=>{
          state.isLoading=true
